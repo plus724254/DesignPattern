@@ -8,10 +8,9 @@ namespace SimpleFactoryPattern
         static void Main(string[] args)
         {
             Console.WriteLine("請輸入球類運動類型 1:籃球 2:排球 3:網球");
+
             var ballGameType = Enum.Parse<BallGameType>(Console.ReadLine());
-
             var ballGameFactory = new BallGameFactory();
-
             var ballGame = ballGameFactory.CreateBallGame(ballGameType);
 
             Console.WriteLine($"球類名稱 : {ballGame.GetName()}");
