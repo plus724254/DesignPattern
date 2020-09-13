@@ -23,6 +23,11 @@ namespace StrategyPattern.Model
             return _gamePad.GetGamePadSupport();
         }
 
+        public bool GetGamepadPlayerSupport(int playerAmount)
+        {
+            return _gamePad.CheckGanePadPlayerSupport(playerAmount);
+        }
+
         public void SetLoadGameWay(ILoadGameWay loadGameWay)
         {
             this._loadGameWay = loadGameWay;
