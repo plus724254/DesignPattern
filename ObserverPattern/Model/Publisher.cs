@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ObserverPattern.Model
@@ -25,11 +26,8 @@ namespace ObserverPattern.Model
 
         public void EndSpread()
         {
-            while(_observers.Count > 0)
-            {
-                _observers[0].OnCompleted();
-            }
-
+            var observersHash = _observers.Select(x => x.GetHashCode()).ToList();
+            observersHash.ForEach(x => _observers.FirstOrDefault(y => y.GetHashCode() == x)?.OnCompleted());
             _observers.Clear();
         }
 
